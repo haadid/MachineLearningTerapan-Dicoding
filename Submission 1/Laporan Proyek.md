@@ -73,11 +73,11 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
 
     -   **K-Nearest Neighbor**
         <br> K-Nearest Neighbor atau KNN adalah algoritma yang digunakan dalam kasus klasifikasi dan regresi. Algoritma ini bekerja berdasarkan prinsip dasar "kedekatan" atau "jarak" antara data. Dalam algoritma KNN, ketika ingin memprediksi kelas atau nilai target dari suatu titik data yang baru, algoritma akan mencari K tetangga terdekat dari titik tersebut dalam data pelatihan. Nilai K dalam KNN adalah jumlah tetangga terdekat yang akan digunakan untuk membuat prediksi. Namun, pemilihan nilai K yang tepat dan penanganan skala fitur yang baik adalah pertimbangan penting saat menggunakannya. Berikut tahapan kerja algoritma KNN:
-        1.   Tentukan nilai K (jumlah tetangga).
-        2.   Hitung jarak antara data yang akan diprediksi dan semua data pelatihan.
-        3.   Urutkan data pelatihan berdasarkan jarak terdekat. dan tetapkan jumlah tetangga sesuai dengan nilai K.
-        4.   Pilih sejumlah K data dengan jarak terdekat.
-        5.  Untuk masalah klasifikasi, tentukan kelas mayoritas dari K tetangga tersebut sebagai prediksi.
+        - Tentukan nilai K (jumlah tetangga).
+        - Hitung jarak antara data yang akan diprediksi dan semua data pelatihan.
+        - Urutkan data pelatihan berdasarkan jarak terdekat. dan tetapkan jumlah tetangga sesuai dengan nilai K.
+        - Pilih sejumlah K data dengan jarak terdekat.
+        - Untuk masalah klasifikasi, tentukan kelas mayoritas dari K tetangga tersebut sebagai prediksi.
 
         Kekurangan algoritma K-Nearest Neighbor adalah:
         -   Kelebihan :
@@ -140,7 +140,7 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
     - Tidak terdapat *missing value* dan duplikasi pada dataset.
     - Terdapat 2768 baris data dan 10 kolom yang mengenai parameter seorang tidak ataupun menderita diabetes.
     - Semua fitur termasuk dalam tipe data numerik yaitu int64 dan 2 sisanya float64.
-    - Terdapat 1 kolom terakhir bernama Outcome yang memiliki nilai antara 1 sebagai adanya diabetes dan 0 sebagai tidak adanya diabetes. Kolom ini merupakan target prediksi.
+    - Terdapat 1 kolom terakhir bernama Outcome yang memiliki nilai antara 1 sebagai adanya diabetes dan 0 sebagai tidak adanya diabetes. Kolom ini merupakan kolom target prediksi.
     - Fitur-fitur pada dataset adalah sebagai berikut:
         - `Id`: Penomoran unik untuk tiap data.
         - `Pregnancies`: Banyak kali hamil.
@@ -162,19 +162,19 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
     - Distribusi Data
       Berikut merupkan distribusi data dengan fitur-fitur yang sama.
       ![distribusi](https://user-images.githubusercontent.com/92203636/274645518-46f0f177-ae15-4056-809a-145e849b238f.png)
-      Distribusi data kebanyakan tidak normal. Hanya fitur `Glucose` dan `BloodPressure` yang terlihat memiliki distribusi normal meskipun terdapat outlier dinilai 0 pada kedua fitur. Sedangkan fitur lainnya cenderung _right-skewed_. Nilai data 0 pada `Glucose` dan `BloodPressure` akan di _drop_ karena merupakan suatu anomali.
+      <br> Distribusi data kebanyakan tidak normal. Hanya fitur `Glucose` dan `BloodPressure` yang terlihat memiliki distribusi normal meskipun terdapat outlier dinilai 0 pada kedua fitur. Sedangkan fitur lainnya cenderung _right-skewed_. Nilai data 0 pada `Glucose` dan `BloodPressure` akan di _drop_ karena merupakan suatu anomali.
 
     - Keseimbangan Data Prediksi <br>
       ![outcome](https://user-images.githubusercontent.com/92203636/274654637-ede4894a-563b-480f-8af1-d5eeb08fe726.png)
-      <br>Data klasifikasi biner tidak seimbang pada fitur `Outcome`. Data tidak adanya diabetes (0) lebih banyak setengah dari data ada diabetes (1).
+      <br> Data klasifikasi biner tidak seimbang pada fitur `Outcome`. Data tidak adanya diabetes (0) lebih banyak setengah dari data ada diabetes (1).
 
     -  Hubungan antara Fitur
        ![pairplot](https://user-images.githubusercontent.com/92203636/274648451-73211ad7-c831-4dee-a9e4-fc6d1ae1fea6.png)
-       Tidak terdapat informasi yang relevan untuk mengetahui hubungan antar fitur pada _pairplot_, baik hubungan positif maupun negatif.
+       <br> Tidak terdapat informasi yang relevan untuk mengetahui hubungan antar fitur pada _pairplot_, baik hubungan positif maupun negatif.
 
     -  Korelasi antara Fitur
        ![enter image description here](https://user-images.githubusercontent.com/92203636/274657001-21a699ab-d03b-48f5-92c9-2f3ceb27b6fa.png)
-       Matriks korelasi menunjukkan adanya hubungan terkait dengan fitur yang ada. Fitur pada `Glucose` (0.49), `BMI` (0.27), `Age` (0.25), dan `Pregnancies` (0.23) terlihat mempunyai korelasi terhadap `Outcome` sebagai penentu ada atau tidaknya diabetes dibandingkan fitur lainnya. Sedangkan `BloodPressure` (0.18), `DiabetesPedigreeFunction` (0.17), dan `Insulin` (0.14) juga memiliki korelasi terhadap `Outcome` meskipun dengan nilai lebih kecil. Sementara itu ada beberapa fitur menarik yang saling berkorelasi namun tidak memiliki korelasi tinggi pada fitur `Outcome` yaitu `Age` dan `Pregnancies` (0.55), `Insulin` dan `SkinThickness` (0.43), `BMI` dan `SkinThickness` (0.39), `Age` dan `BloodPressure` (0.33), `Glucose` dan `Insulin` (0.33), dst.
+       <br> Matriks korelasi menunjukkan adanya hubungan terkait dengan fitur yang ada. Fitur pada `Glucose` (0.49), `BMI` (0.27), `Age` (0.25), dan `Pregnancies` (0.23) terlihat mempunyai korelasi terhadap `Outcome` sebagai penentu ada atau tidaknya diabetes dibandingkan fitur lainnya. Sedangkan `BloodPressure` (0.18), `DiabetesPedigreeFunction` (0.17), dan `Insulin` (0.14) juga memiliki korelasi terhadap `Outcome` meskipun dengan nilai lebih kecil. Sementara itu ada beberapa fitur menarik yang saling berkorelasi namun tidak memiliki korelasi tinggi pada fitur `Outcome` yaitu `Age` dan `Pregnancies` (0.55), `Insulin` dan `SkinThickness` (0.43), `BMI` dan `SkinThickness` (0.39), `Age` dan `BloodPressure` (0.33), `Glucose` dan `Insulin` (0.33), dst.
 
        Dikarenakan model hanya akan memprediksi `Outcome` sebagai ada tidaknya diabetes, maka hanya fitur yang memliki korelasi signifikan yaitu `Pregnancies`, `Glucose`, `Insulin`, `BMI`, dan `Age` akan digunakan sebagai penentu prediksi model. Fitur yang memiliki tingkat korelasi terhadap `Outcome` akan dianalisa lebih lanjut.
 
@@ -183,7 +183,7 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
        ![bmi_outcome](https://user-images.githubusercontent.com/92203636/274666280-e217a64c-5773-4e95-b8b4-96e8966e7a32.png)
        ![age_outcome](https://user-images.githubusercontent.com/92203636/274666371-420162ae-7ed7-4d56-b27e-1427b3ea9512.png)
        ![pregnancies_outcome](https://user-images.githubusercontent.com/92203636/274666435-1bcf9c21-8002-4b63-afd1-0c8c3e47fb0b.png)
-       Nilai rata-rata penderita diabetes pada keempat fitur tersebut lebih tinggi dibandingkan yang bukan penderitanya.
+       <br> Nilai rata-rata penderita diabetes pada keempat fitur tersebut lebih tinggi dibandingkan yang bukan penderitanya.
 
 ## Data Preparation
 Berikut tahapan-tahapan dalam menyiapkan data:
@@ -206,12 +206,12 @@ Model yang akan dibangun merupakan kasus *Binary Classification* dimana tugas mo
   <br> Pembuatan model dengan algoritma Regresi Logistik menggunakan modul [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) dari *scikit-learn*. Model akan dilatih dengan data latih lalu kemudian dites dengan data uji untuk melihat performanya. Hasil pengujian menggunakan algoritma Regresi Logsitik adalah sebagai berikut:
     - Classification Report <br>
       ![logreg_cr](https://user-images.githubusercontent.com/92203636/274839576-5193a4c4-606f-4af8-8921-53a5c5612e8c.png)
-      <br>Model mendapatkan akurasi sebesar 0.76
+      <br> Model mendapatkan akurasi sebesar 0.76
 
     - *Hyperparameter Tuning*
       <br> Untuk menemukan parameter yang optimal, dilakukan _hyperparameter tuning_ menggunakan [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)  yang merupakan modul dari library _scikit-learn_. GridSearchCV adalah metode pemilihan kombinasi model dan hyperparameter dengan cara menguji coba satu persatu kombinasi dan melakukan validasi untuk setiap kombinasi. Tujuannya adalah menentukan kombinasi yang menghasilkan performa model terbaik yang dapat dipilih untuk dijadikan model untuk prediksi. Hasil dari GridSearchCV untuk algoritma Regresi Logistik adalah sebagai berikut:
       ![logreg_gridsearch](https://user-images.githubusercontent.com/92203636/274841802-a8a24ebc-27d7-427b-91a6-112697ec1112.png)
-      Sayangnya, model dengan _hyperparamter tuning_ terbaik tetap memiliki nilai akurasi yang sama.
+      <br> Sayangnya, model dengan _hyperparamter tuning_ terbaik tetap memiliki nilai akurasi yang sama.
 
     - Confusion Matrix: <br>
       ![logreg_cm](https://user-images.githubusercontent.com/92203636/274842356-ebed4b2a-21a7-45b7-881f-ed4080191960.png)
@@ -236,9 +236,9 @@ Model yang akan dibangun merupakan kasus *Binary Classification* dimana tugas mo
        <br> Model meraih skor akurasi 0.79
 
     -  *Hyperparameter Tuning*
-       <br> Untuk menemukan parameter yang optimal, dilakukan _hyperparameter tuning_ menggunakan [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)  yang merupakan modul dari library _scikit-learn_. GridSearchCV adalah metode pemilihan kombinasi model dan hyperparameter dengan cara menguji coba satu persatu kombinasi dan melakukan validasi untuk setiap kombinasi. Tujuannya adalah menentukan kombinasi yang menghasilkan performa model terbaik yang dapat dipilih untuk dijadikan model untuk prediksi. Hasil dari GridSearchCV untuk algoritma SVM adalah sebagai berikut:
+       <br> Untuk menemukan parameter yang optimal, dilakukan _hyperparameter tuning_ menggunakan [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)  yang merupakan modul dari library _scikit-learn_. GridSearchCV adalah metode pemilihan kombinasi model dan hyperparameter dengan cara menguji coba satu persatu kombinasi dan melakukan validasi untuk setiap kombinasi. Tujuannya adalah menentukan kombinasi yang menghasilkan performa model terbaik yang dapat dipilih untuk dijadikan model untuk prediksi. Hasil dari GridSearchCV untuk algoritma SVM adalah sebagai berikut: <br> 
        ![svm_gridsearch1](https://user-images.githubusercontent.com/92203636/274918519-6574385c-f6b0-4ba3-a812-450bb2eb07fc.png) ![svm_gridsearch2](https://user-images.githubusercontent.com/92203636/274918270-93bb16cb-1829-434b-9c67-ccc943c0e4e0.png)
-       <br> Nilai akurasi bertambah menjadi 0.98
+       <br> Nilai akurasi mengalami penaikan menjadi 0.98
     -  Confusion Matrix <br>
        ![svm_cm](https://user-images.githubusercontent.com/92203636/274918646-b26b1330-ab22-4500-aa25-cee20a3d2145.png)
        <br> Berdasarkan hasil pengujian diatas dapat dilihat bahwa model dengan algoritma Support Vector Machine memperoleh nilai sebesar 0.98
