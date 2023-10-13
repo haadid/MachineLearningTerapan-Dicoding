@@ -15,13 +15,13 @@ Melalui proyek ini, teknik dan algoritma dalam *machine learning* dimanfaatkan u
 
 ### Urgensi dan Relevansi
 1. **Masalah Kesehatan Global**
-   Diabetes adalah masalah kesehatan global yang memengaruhi banyak individu dari berbagai latar belakang dan usia. Dengan memprediksi risiko diabetes, kita dapat memberikan layanan perawatan yang lebih baik.
+   <br> Diabetes adalah masalah kesehatan global yang memengaruhi banyak individu dari berbagai latar belakang dan usia. Dengan memprediksi risiko diabetes, kita dapat memberikan layanan perawatan yang lebih baik.
 2.  **Pencegahan Komplikasi**
-    Diabetes dapat menyebabkan berbagai komplikasi serius, termasuk kerusakan organ. Identifikasi dini individu yang berisiko dapat membantu mencegah komplikasi ini.
+    <br> Diabetes dapat menyebabkan berbagai komplikasi serius, termasuk kerusakan organ. Identifikasi dini individu yang berisiko dapat membantu mencegah komplikasi ini.
 3.  **Efisiensi Perawatan Kesehatan**
-    Proyek ini juga dapat membantu sistem perawatan kesehatan dalam mengalokasikan sumber daya dengan lebih efisien. Pasien dengan risiko tinggi dapat mendapatkan perawatan yang lebih intensif, sementara yang memiliki risiko rendah dapat dipantau dengan cara yang lebih sederhana.
+    <br> Proyek ini juga dapat membantu sistem perawatan kesehatan dalam mengalokasikan sumber daya dengan lebih efisien. Pasien dengan risiko tinggi dapat mendapatkan perawatan yang lebih intensif, sementara yang memiliki risiko rendah dapat dipantau dengan cara yang lebih sederhana.
 4.  **Pendukung Penelitian Medis**
-    Model prediksi risiko diabetes juga membantu para peneliti medis dalam mengidentifikasi faktor-faktor yang berkontribusi terhadap penyakit ini. Hal ini memberikan wawasan yang berharga untuk penelitian lebih lanjut dalam pencegahan dan pengobatan diabetes.
+    <br> Model prediksi risiko diabetes juga membantu para peneliti medis dalam mengidentifikasi faktor-faktor yang berkontribusi terhadap penyakit ini. Hal ini memberikan wawasan yang berharga untuk penelitian lebih lanjut dalam pencegahan dan pengobatan diabetes.
 
 ### Referensi
 1.  American Diabetes Association. (2022). [Diagnosis and Classification of Diabetes Mellitus.](https://care.diabetesjournals.org/content/42/Supplement_1/S13)
