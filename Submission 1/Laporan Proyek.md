@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 # Laporan Proyek Machine Learning - Marwan Hadid
 
 ## Domain Proyek
@@ -154,7 +147,7 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
     - **Analisis Outlier**
       <br> Fitur-fitur yang menjadi tolak ukur suatu penyakit diabetes yaitu `Pregnancies`, `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`, `DiabetesPedigreeFunction`, dan `Age` akan dianalisa distribusi datanya untuk mengetahui persebaran data dan mendeteksi adanya *outlier*.
       ![outlier](https://user-images.githubusercontent.com/92203636/274642804-dca237e8-1527-404b-b656-6c85104dbcc6.png)
-      <br> Gambar 1. Analisis Outlier <br>
+      <br> Gambar 1. Analisis *Outlier* <br>
       <br> Pada Gambar 1, sayangnya, semua fitur memiliki *outlier*. *Outlier* merupakan nilai pada suatu fitur yang berada lebih tinggi atau lebih rendah dari nilai dalam fitur tersebut pada umumnya. Fitur `Glucose`, `BloodPressure`, dan`BMI` memiliki anomali pada angka 0 karena tidak mungkin adanya fitur dengan nilai tersebut. Fitur `Insulin` dan `DiabetesPedigreeFunction` memiliki outlier terbanyak.
 
     - **Distribusi Data**
