@@ -226,11 +226,20 @@ Pada pembuatan proyek ini metrik evaluasi yang digunakan yaitu root mean squared
 <br> Setelah dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3124.
 
 
-## Kesimpulan
+## Penutup
 Sistem rekomendasi dengan model *Content Based Filtering* dan *Collaborative Filtering* telah selesai dibuat. Pada model *Content Based Filtering* dibuat menggunakan metode *cosine similarity*. Sedangkan model *Collaborative Filtering* menggunakan dua pendekatan, yaitu *K-Nearest Neighbor* dan *Deep Learning*.
 
 
 ## Referensi
-American Diabetes Association. (2022). [Diagnosis and Classification of Diabetes Mellitus.](https://care.diabetesjournals.org/content/42/Supplement_1/S13)
+Dewi, K., & Ciptayani, P. (2022). [PEMODELAN SISTEM REKOMENDASI CERDAS MENGGUNAKAN HYBRID DEEP LEARNING. _Jurnal Sistem Informasi dan Sains Teknologi, 4_(2)](https://doi.org/10.31326/sistek.v4i2.1157)
 
-(https://doi.org/10.19184/isj.v7i3.35441)
+Muhammad Haris Diponegoro, Sri Suning Kusumawardani, & Indriana Hidayah. (2021).  [Implementation of Deep Learning Methods in Predicting Student Performance: A Systematic Literature Review. _Jurnal Nasional Teknik Elektro Dan Teknologi Informasi_, _10_(2), 131-138.](https://doi.org/10.22146/jnteti.v10i2.1417)
+
+Theodorus, D., Defit, S., & Nurcahyo, G. W. (2021). [Machine Learning Rekomendasi Produk dalam Penjualan Menggunakan Metode Item-Based Collaborative Filtering. _Jurnal Informasi Dan Teknologi_, _3_(4), 202-208.](https://doi.org/10.37034/jidt.v3i4.151)
+
+Prayogo, J., Suharso, A., & Rizal, A. (2020). [Analisis Perbandingan Model Matrix Factorization dan K-Nearest Neighbor dalam Mesin Rekomendasi Collaborative Berbasis Prediksi Rating. _Jurnal Informatika Universitas Pamulang, 5_(4), 506-514.](http://dx.doi.org/10.32493/informatika.v5i4.7379)
+
+Romindo, Jefri Junifer Pangaribuan, Okky Putra Barus, & Jusin. (2022) [Penerapan Metode Collaborative Filtering Dan Knowledge Item Based Terhadap Sistem Rekomendasi Kamera DSLR. _SATIN - Sains Dan Teknologi Informasi_, _8_(2), 89-100.](https://doi.org/10.33372/stn.v8i2.883)
+
+Fiarni, C., & Maharani, H. (2019). [Product Recommendation System Design Using Cosine Similarity and Content-based Filtering Methods. _IJITEE (International Journal of Information Technology and Electrical Engineering), 3_(2), 42-48.](https://doi.org/10.22146/ijitee.45538)
+
