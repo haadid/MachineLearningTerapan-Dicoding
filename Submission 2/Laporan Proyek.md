@@ -220,10 +220,10 @@ $$RMSE = \sqrt{\frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{n}}$$ <br>
 Berikut merupakan visualisasi metrik pada training terhadap model *deep learning* : <br>
 ![hasil_training](https://user-images.githubusercontent.com/92203636/285206340-c46d8b7c-535c-468e-ac1a-19c9aac62079.png)
 
-Pada pembuatan proyek ini metrik evaluasi yang digunakan yaitu root mean squared error (RMSE). Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1987 dan error pada data validasi sebesar 0.3008. Nilai tersebut cukup bagus untuk sistem rekomendasi.
+Pada pembuatan proyek ini metrik evaluasi yang digunakan yaitu root mean squared error (RMSE). Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1987 dan error pada data validasi sebesar 0.3008. Nilai tersebut cukup bagus untuk sistem rekomendasi. <br>
 ![hasil_evaluate](https://user-images.githubusercontent.com/92203636/285189689-f632b57d-b7d1-4b11-aa62-57f707c30544.png)
 
-<br> Setelah dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3124.
+<br> Setelah dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3196.
 
 
 ## Penutup
