@@ -36,18 +36,15 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
     -   Menghapus kolom/fitur yang tidak diperlukan.
     -   Menangani nilai-nilai yang hilang atau data kosong.
     -   Melakukan encoding pada fitur kategorikal.
-    -   Melakukan penyesuaian format data sesuai kebutuhan.
 
 - **Persiapan Data**. Persiapan data melibatkan langkah-langkah seperti:
     -   Persiapan data untuk model Content-Based Filtering.
         -   Melakukan seleksi fitur-fitur penting dari data ponsel.
         -   Menyusun matriks representasi fitur ponsel.
-        -   Melakukan *Vectorization* menggunakan *CountVectorizer* untuk mengubah teks menjadi matriks hitungan token.
-        -   Melakukan perhitungan matriks kemiripan (*cosine similarity*) antar ponsel berdasarkan fitur-fitur yang dipilih.
+        -   Melakukan perhitungan matriks kemiripan antar ponsel berdasarkan fitur-fitur yang dipilih.
 
     -   Persiapan data untuk model Collaborative Filtering dengan KNN.
         -   Mengubah format dataset menjadi *pivot table*.
-        -   Inisialisasi model KNN dengan metrik *cosine* dan algoritma *brute*.
 
     -   Persiapan data untuk model Collaborative Filtering dengan *Deep Learning*.
         -   Melakukan *encoding* fitur kedalam indeks integer.
@@ -64,38 +61,6 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
 
     -   **Collaborative Filtering dengan *Deep Learning***.
         <br> Model *deep learning* digunakan untuk memodelkan hubungan yang kompleks antara pengguna dan ponsel berdasarkan data historis. *Deep Learning* adalah subbidang dari *machine learning* yang terinspirasi oleh struktur otak manusia, disebut *Artificial Neural Networks* (ANN). ANN adalah jaringan saraf tiruan yang memiliki struktur mirip dengan otak manusia. Ia terdiri dari lapisan-lapisan (layers) dengan neuron-neuron yang saling terhubung. Pada model *Collaborative Filtering*, ANN dapat memahami pola yang sulit diidentifikasi melalui metode tradisional. Model ini dapat memberikan rekomendasi yang lebih personal dan akurat dengan memahami konteks dan preferensi pengguna secara mendalam. Metode Deep Learning lebih efisien dalam menangani data historis dan memberikan rekomendasi yang lebih tepat sasaran berdasarkan pemahaman yang lebih mendalam terhadap pola-pola kompleks dalam data.
-
-
--   **Kelebihan dan Kekurangan Metode**
-    -   **Content-Based Filtering (*Cosine Similarity*)**.
-	    -   Kelebihan:
-	        -   Mampu memberikan rekomendasi berdasarkan fitur yang disukai pengguna.
-	        -   Efektif untuk mengatasi cold start problem.
-	        -   Pemahaman terhadap preferensi individual pengguna.
-	    -   Kekurangan:
-	        -   Rentan terhadap over-specialization, di mana rekomendasi hanya didasarkan pada preferensi sebelumnya tanpa variasi.
-	        -   Bergantung pada kualitas deskripsi dan representasi fitur dari item.
-
-    -   **Collaborative Filtering (KNN)**.
-	    -   Kelebihan:
-	        -   Mampu memberikan rekomendasi berdasarkan perilaku dan preferensi serupa antar pengguna.
-	        -   Dapat menangani cold start problem melalui item-based collaborative filtering.
-	        -   Tidak memerlukan informasi eksplisit mengenai item.
-	    -   Kekurangan:
-	        -   Rentan terhadap masalah sparsity pada data pengguna-item.
-	        -   Performa dapat menurun jika jumlah pengguna dan item sangat besar.
-	        -   Tidak dapat menangani perubahan cepat dalam preferensi pengguna.
-
-	-   **Collaborative Filtering (*Deep Learning*)**:
-	    
-	    -   Kelebihan:
-	        -   Mampu menangani pola kompleks dalam data pengguna dan item.
-	        -   Dapat memberikan rekomendasi yang lebih personal dan akurat.
-	        -   Tidak terlalu bergantung pada representasi fitur yang didefinisikan secara manual.
-	    -   Kekurangan:
-	        -   Memerlukan jumlah data historis yang cukup untuk pelatihan model deep learning.
-	        -   Pemrosesan yang lebih intensif secara komputasional, terutama pada model deep learning.
-	        -   Rentan terhadap overfitting jika data pelatihan tidak cukup diversifikasi.
 
 
 ## Data Understanding
@@ -149,10 +114,12 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
     - **Distribusi Rating**
       <br> ![distribusi_rating](https://user-images.githubusercontent.com/92203636/285139930-44a855ca-3d34-4334-b3de-581c17ce028d.png)
       <br> Gambar 3. Distribusi Rating <br>
+      <br> Pada Gambar 3, distribusi rating terlihat tidak beraturan dan ada sedikit pola yang menunjukkan *negative skew* pada rating 3-8.
 
     - **Wordcloud Model Ponsel**
-       <br> ![wordcloud_model_ponsel](https://user-images.githubusercontent.com/92203636/285188819-4a7cd36e-3364-4a46-a95a-91335f02e4ab.png)
+       <br> ![wordcloud_model_ponsel](https://github.com/haadid/MachineLearningTerapan-Dicoding/assets/92203636/84923aee-0229-45e9-9070-51ccbf6bfc1c)
        <br> Gambar 4. *Worldcloud* Model Ponsel <br>
+       <br> Pada Gamabr 4, ditampilkan daftar kata-kata yang sering digunakan pada penamaan model semakin sering kata tersebut digunakan maka semakin besar kata tersebut. Terlihat kata yang paling sering digunakan adalah 'Moto G'
 
 
 ## Data Preparation
@@ -195,35 +162,127 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
 - **Content Based Filtering**
   <br> Untuk membangun model Content-Based Filtering, langkah pertama melibatkan persiapan data dengan memilih fitur-fitur utama yang akan menjadi dasar rekomendasi. Selanjutnya, fitur-fitur yang dipilih digabungkan ke dalam satu kolom baru yang diberi nama `combinedFeatures`. Proses penggabungan ini melibatkan penyatuan nilai-nilai fitur tersebut ke dalam satu string yang mencerminkan karakteristik ponsel secara menyeluruh. Hasil penggabungan ini akan menjadi dasar untuk mengukur kesamaan antarponsel. Dalam langkah mengukur kesamaan, *CountVectorizer* digunakan untuk mengonversi teks pada kolom `combinedFeatures` menjadi vektor numerik. Hal ini memungkinkan perhitungan kemiripan antarponsel. Selanjutnya menghitung matriks kemiripan menggunakan kemiripan kosinus. Matriks ini memberikan nilai kemiripan antara setiap pasang ponsel dalam dataset. Dengan matriks kemiripan yang dihasilkan, fungsi rekomendasi Content-Based Filtering dapat dibuat. Fungsi ini mempertimbangkan indeks model tertentu dan menghasilkan rekomendasi ponsel berdasarkan kesamaan fitur. Rekomendasi ini dapat disesuaikan dengan kebutuhan, misalnya, menampilkan 10 ponsel teratas. Dengan langkah-langkah tersebut, model Content-Based Filtering dapat memberikan rekomendasi ponsel berdasarkan kemiripan fitur-fitur yang dipilih.
   <br>
-  <br> Berikut hasil rekomendasi *Content Based Filtering*:
-  <br> ![hasil_cbf](https://user-images.githubusercontent.com/92203636/285189446-8ed0e1a6-81cc-4f0c-b1bd-6e8e8fec23a7.png)
+  <br> Berikut hasil rekomendasi *Content Based Filtering* dengan *Cosine Similarity*:
+  
+	|   | Top 5 Rekomendasi ponsel berdasarkan model 10T: |                 |     |             |                 |       |
+	|---|-------------------------------------------------|-----------------|-----|-------------|-----------------|-------|
+	|   |                 operating system                | internal memory | RAM | main camera |      model      | score |
+	| 0 | Android                                         | 128             | 8   | 50          | Pixel 6         | 1.0   |
+	| 1 | Android                                         | 128             | 8   | 50          | Nord 2T         | 1.0   |
+	| 2 | Android                                         | 128             | 8   | 50          | Galaxy S22 Plus | 1.0   |
+	| 3 | Android                                         | 128             | 6   | 50          | Moto G Stylus   | 1.0   |
+	| 4 | Android                                         | 128             | 8   | 50          | 12 Pro          | 1.0   |
+  
+    -   Kelebihan:
+	    -   Mampu memberikan rekomendasi berdasarkan fitur yang disukai pengguna.
+	    -   Efektif untuk mengatasi cold start problem.
+	    -   Pemahaman terhadap preferensi individual pengguna.
+    -   Kekurangan:
+	    -   Rentan terhadap over-specialization, di mana rekomendasi hanya didasarkan pada preferensi sebelumnya tanpa variasi.
+	    -   Bergantung pada kualitas deskripsi dan representasi fitur dari item.
+	    -   Tidak efektif pada fitur yang banyak.
+	    -   Kurang akurat jika suatu fitur memiliki banyak sekali keberagaman.
 
 - **Collaborative Filtering dengan KNN**
   <br> Untuk membangun model ini, digunakan fungsi NearestNeighbors dari sklearn dengan parameter metrik 'cosine'. Algoritma ini menghitung kesamaan cosinus antara vektor rating. Penggunaan algoritma 'brute' pada parameter mengindikasikan bahwa algoritma akan menghitung tetangga terdekat dengan mencari kesamaan langsung dengan seluruh data. Model ini kemudian diinisialisasi sebagai model_knn dan difitting terhadap data yang telah diubah menjadi pivot table. <br>
   <br> Setelah tahap inisialisasi dan fitting, dibuat fungsi recommend_cellphone untuk memberikan rekomendasi terhadap suatu model ponsel pintar. Hasil rekomendasi ini disajikan dengan menyertakan model ponsel yang memiliki kesamaan dengan model yang diberikan. <br>
   <br> Berikut adalah hasil rekomendasi *Collaborative Filtering* dengan KNN:
-  <br> ![hasil_knn](https://user-images.githubusercontent.com/92203636/285189383-00d7a827-7a2f-4c72-a767-bdf3afd9d5d5.png)
+  
+	| 10 Rekomendasi untuk ponsel Xperia Pro sebagai berikut : |
+	|----------------------------------------------------------|
+	| 0: Nord N20, with distance of 0.7391863503412192         |
+	| 1: Find X5 Pro, with distance of 0.7221312781196743      |
+	| 2: 10T, with distance of 0.706235262124101               |
+	| 3: Redmi Note 11, with distance of 0.6847865811144636    |
+	| 4: Moto G Pure, with distance of 0.6800465276651233      |
+	| 5: Pixel 6a, with distance of 0.6640232136428437         |
+	| 6: Moto G Play, with distance of 0.6449885098433434      |
+	| 7: Pixel 6, with distance of 0.620879067430839           |
+	| 8: X80 Pro, with distance of 0.5922716936733281          |
+	| 9: Galaxy A13, with distance of 0.5309814131625528       |
+
+    -   Kelebihan:
+	    -   Mampu memberikan rekomendasi berdasarkan perilaku dan preferensi serupa antar pengguna.
+	    -   Dapat menangani cold start problem melalui item-based collaborative filtering.
+	    -   Tidak memerlukan informasi eksplisit mengenai item.
+    -   Kekurangan:
+	    -   Rentan terhadap masalah sparsity pada data pengguna-item.
+	    -   Performa dapat menurun jika jumlah pengguna dan item sangat besar.
+	    -   Tidak dapat menangani perubahan cepat dalam preferensi pengguna.
   
 - **Collaborative Filtering dengan Deep Learning**
   <br> Untuk mengembangkan model ini, digunakan metode Deep Learning atau Jaringan Saraf. Model yang dikonstruksi akan menghitung skor kesesuaian antara pengguna dan ponsel dengan menggunakan teknik embedding. Proses pertama melibatkan embedding data pengguna dan ponsel. Selanjutnya, operasi perkalian dot product dilakukan antara embedding pengguna dan ponsel. Terdapat juga penambahan bias untuk setiap pengguna dan ponsel. Skor kesesuaian didefinisikan dalam rentang [0,1] dengan menggunakan fungsi aktivasi sigmoid. Model dengan pendekatan Deep Learning ini dirancang dengan membuat kelas RecommenderNet menggunakan kelas Model dari Keras. Proses kompilasi model melibatkan Binary Crossentropy untuk menghitung fungsi kerugian, Adam (Adaptive Moment Estimation) sebagai pengoptimalkan, dan root mean squared error (RMSE) sebagai evaluasi metrik. Langkah selanjutnya adalah melakukan proses pelatihan terhadap model. <br>
   <br> Untuk mendapatkan rekomendasi ponsel, pertama-tama diambil sampel pengguna secara acak dan ditetapkan variabel cellphones_not_rated, yang merupakan daftar ponsel yang belum pernah diulas oleh pengguna. Daftar cellphones_not_rated ini kemudian menjadi kandidat ponsel yang direkomendasikan. Variabel cellphones_not_rated diperoleh dengan menggunakan operator bitwise (~) pada variabel cellphones_rated_by_user. Sebelumnya, pengguna telah memberikan rating pada beberapa ponsel yang telah mereka lihat. Informasi rating ini digunakan untuk menyusun rekomendasi ponsel yang dapat sesuai dengan preferensi pengguna. Untuk mendapatkan rekomendasi ponsel, digunakan fungsi model.predict() dari pustaka Keras. <br>
   <br> Berikut adalah hasil rekomendasi *Collaborative Filtering* dengan *Deep Learning*:
-  <br> ![hasil_dl](https://user-images.githubusercontent.com/92203636/285189212-8f61d7fa-4e46-4770-9f95-c08ece9cb8ef.png)
+  
+	| Showing recommendations for user: 255  |
+	|----------------------------------------|
+	| ====================================   |
+	| Cellphones with high ratings from user |
+	| --------------------------------       |
+	| iPhone 13 Pro Max : Apple              |
+	| Galaxy Z Flip 3 : Samsung              |
+	| 11T Pro : Xiaomi                       |
+	| Galaxy Z Fold 3 : Samsung              |
+	| Zenfone 8 : Asus                       |
+	| --------------------------------       |
+	| Top 10 Cellphones recommendations      |
+	| --------------------------------       |
+	| iPhone XR : Apple                      |
+	| Galaxy S22 : Samsung                   |
+	| X80 Pro : Vivo                         |
+	| Find X5 Pro : Oppo                     |
+	| iPhone 13 Pro : Apple                  |
+	| Pixel 6 : Google                       |
+	| Xperia Pro : Sony                      |
+	| Pixel 6 Pro : Google                   |
+	| 10 Pro : OnePlus                       |
+	| iPhone 13 : Apple                      |
+
+    -   Kelebihan:
+	    -   Mampu menangani pola kompleks dalam data pengguna dan item.
+	    -   Dapat memberikan rekomendasi yang lebih personal dan akurat.
+	    -   Tidak terlalu bergantung pada representasi fitur yang didefinisikan secara manual.
+    -   Kekurangan:
+	    -   Memerlukan jumlah data historis yang cukup untuk pelatihan model deep learning.
+	    -   Pemrosesan yang lebih intensif secara komputasional, terutama pada model deep learning.
+	    -   Rentan terhadap overfitting jika data pelatihan tidak cukup diversifikasi.
 
 
 ## Evaluation
-Pada proyek ini, performa model dengan pendekatan *deep learning* diukur menggunakan *Root Mean Squared Error* (RMSE) sebagai metrik evaluasinya. *Root Mean Square Error* (RMSE) merupakan metode pengukuran yang mengevaluasi perbedaan antara nilai prediksi suatu model dan nilai yang diamati sebagai estimasi dari nilai sebenarnya. RMSE dihasilkan dari akar kuadrat dari *Mean Square Error*. Tingkat keakuratan dalam mengestimasi kesalahan pengukuran tercermin dari kecilnya nilai RMSE. Sebuah metode estimasi dianggap lebih akurat jika memiliki RMSE yang lebih kecil dibandingkan dengan metode estimasi lain yang memiliki RMSE yang lebih besar. Untuk menghitung RMSE, langkah-langkahnya melibatkan pengurangan nilai aktual dari nilai prediksi, hasilnya dikuadratkan, dijumlahkan secara keseluruhan, dan kemudian dibagi dengan jumlah data. Hasil perhitungan tersebut selanjutnya diakar kuadratkan untuk mendapatkan nilai akhir RMSE. <br>
+Pada proyek ini terdapat dua model yang akan dievaluasi. Model *Content Based Filtering* akan dievaluasi menggukanan metrik *Precision Recommender System* dan model *Collaborative Filtering* dengan metode *Deep Learning* akan dievaluasi menggunakan metrik *Root Mean Squared Error* (RMSE). 
 
-Berikut rumus untuk RMSE: <br>
-$$RMSE = \sqrt{\frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{n}}$$ <br>
+### Content Based Filtering dengan Cosine Similarity
+*Precision* atau presisi adalah metrik yang mengukur keberhasilan model dalam memberikan rekomendasi yang relevan. Nilai presisi didapatkan dengan menghitung jumlah rekomendasi yang relevan dibagi dengan jumlah rekomendasi yang diberikan.
+- **Precision** 
+  <br> Perumusan Presisi adalah sebagai berikut:
+  $${Precision} = \frac{\text{Number of Relevant Recommendations}}{\text{Total Number of Recommendations}}$$ <br>
+
+Dari hasil rekomendasi model *Content Based Filtering*, terdapat 5 rekomendasi dan hanya 4 yang relevan terhadap *item* yang dicari. Sehingga presisi akhir dari model adalah 80%.
+
+
+### Collaborative Filtering dengan Deep Learning
+*Root Mean Square Error* (RMSE) adalah metrik evaluasi yang umum digunakan untuk mengukur seberapa baik model regresi dapat memprediksi nilai. RMSE dihitung dengan mengukur perbedaan antara nilai prediksi dan nilai sebenarnya. Dalam konteks ini, nilai RMSE yang lebih kecil menunjukkan tingkat akurasi yang lebih tinggi. RMSE mengukur seberapa besar deviasi antara nilai prediksi model dengan nilai sebenarnya. Metrik evaluasi ini terkait erat dengan Mean Squared Error (MSE), yang mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai sebenarnya. MSE dihitung dengan menjumlahkan selisih kuadrat antara setiap nilai prediksi dan nilai sebenarnya, kemudian hasilnya dibagi dengan jumlah total observasi.
+
+Untuk menghitung RMSE, hasil perhitungan MSE kemudian diakar kuadratkan untuk mendapatkan nilai akhir RMSE. Hasil RMSE yang rendah menunjukkan bahwa model memiliki kemampuan yang baik dalam memprediksi peringkat pengguna terhadap item, dan rekomendasi yang dihasilkan cenderung lebih sesuai dengan preferensi pengguna. Sebaliknya, nilai RMSE yang tinggi menunjukkan bahwa model memiliki tingkat kesalahan yang signifikan dalam memprediksi peringkat, dan rekomendasi mungkin tidak sesuai dengan preferensi pengguna secara akurat. <br>
+
+- **MSE**
+  <br> Perumusan MSE adalah sebagai berikut:
+  $$MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
+  
+- **RMSE**
+  <br> Perumusan RMSE adalah sebagai berikut:
+  $$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$ <br>
+
 
 Berikut merupakan visualisasi metrik pada training terhadap model *deep learning* : <br>
-![hasil_training](https://user-images.githubusercontent.com/92203636/285206340-c46d8b7c-535c-468e-ac1a-19c9aac62079.png)
+![hasil_training](https://github.com/haadid/MachineLearningTerapan-Dicoding/assets/92203636/b0caecab-06ad-47a2-9277-328a740819d9)
 
-Pada pembuatan proyek ini metrik evaluasi yang digunakan yaitu root mean squared error (RMSE). Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1987 dan error pada data validasi sebesar 0.3008. Nilai tersebut cukup bagus untuk sistem rekomendasi. <br>
-<br> ![hasil_evaluate](https://user-images.githubusercontent.com/92203636/285189689-f632b57d-b7d1-4b11-aa62-57f707c30544.png)
 
-Setelah dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3196.
+Pada pembuatan proyek ini metrik evaluasi yang digunakan yaitu root mean squared error (RMSE). Proses training model cukup smooth dan model konvergen pada epochs. Hasil pelatihan tampaknya berada dalam kondisi *good fit*. Performa pada data validasi tidak menunjukkan tanda-tanda *overfitting*, dan RMSE yang rendah pada kedua dataset menunjukkan kemampuan model dalam memprediksi peringkat dengan baik. Dari proses ini, diperoleh nilai error akhir sebesar sekitar 0.2040 dan error pada data validasi sebesar 0.2944. Nilai tersebut cukup bagus untuk sistem rekomendasi. <br>
+<br> ![hasil_evaluate](https://github.com/haadid/MachineLearningTerapan-Dicoding/assets/92203636/d71e24dc-ea3f-4809-9e05-7b6647dcde99)
+
+Setelah dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3281.
 
 
 ## Penutup
@@ -242,4 +301,3 @@ Prayogo, J., Suharso, A., & Rizal, A. (2020). [Analisis Perbandingan Model Matri
 Romindo, Jefri Junifer Pangaribuan, Okky Putra Barus, & Jusin. (2022) [Penerapan Metode Collaborative Filtering Dan Knowledge Item Based Terhadap Sistem Rekomendasi Kamera DSLR. _SATIN - Sains Dan Teknologi Informasi_, _8_(2), 89-100.](https://doi.org/10.33372/stn.v8i2.883)
 
 Fiarni, C., & Maharani, H. (2019). [Product Recommendation System Design Using Cosine Similarity and Content-based Filtering Methods. _IJITEE (International Journal of Information Technology and Electrical Engineering), 3_(2), 42-48.](https://doi.org/10.22146/ijitee.45538)
-
