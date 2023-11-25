@@ -53,13 +53,13 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
 -   **Pembangunan Model**.
     <br> Sistem rekomendasi ini menggunakan dua pendekatan utama, yaitu model *Content Based Filtering* dengan teknik *Cosine Similarity* dan *Collaborative Filtering* dengan *Deep Learning* dan *K-Nearest Neighbors* (KNN). Model *Content Based Filtering* ini akan memberikan rekomendasi berdasarkan kesamaan fitur dengan ponsel yang telah disukai oleh pengguna. Sementara itu, model *Collaborative Filtering* menggunakan pendekatan *Deep Learning* untuk memahami pola kompleks dari data historis pengguna dan *K-Nearest Neighbors* (KNN) untuk menangani situasi cold start dan memberikan rekomendasi berdasarkan kesamaan pengguna.
 
-    -   **Content-Based Filtering dengan *Cosine Similarity***.
+    -   **Content-Based Filtering dengan Cosine Similarity**.
         <br> Pada pendekatan ini, ponsel direkomendasikan berdasarkan kesamaan fitur dengan ponsel yang telah disukai oleh pengguna. Nilai kesamaan diukur menggunakan metrik Cosine Similarity, yang mengukur sudut kosinus antara dua vektor fitur. Semakin kecil sudutnya, semakin besar kesamaan antara dua ponsel. Meskipun referensi tidak menyebutkan secara eksplisit metode ini sebagai Content-Based Filtering, namun penggunaan fitur untuk merekomendasikan item yang mirip dengan item yang disukai pengguna sesuai dengan konsep dasar Content-Based Filtering. Metode ini bekerja dengan mengukur kesamaan antara item berdasarkan preferensi pengguna. Prosesnya melibatkan perhitungan kesamaan antara item, dan hasilnya digunakan untuk memberikan rekomendasi item yang belum dilihat oleh pengguna. Jarak kedekatan (kemiripan) antar item diukur menggunakan metrik. Item yang memiliki nilai kesamaan tertinggi dengan item yang disukai pengguna dijadikan rekomendasi. Metode ini efektif untuk memberikan rekomendasi item yang serupa dengan item yang disukai oleh pengguna.
 
-    -   **Collaborative Filtering dengan *K-Nearest Neighbor***.
+    -   **Collaborative Filtering dengan K-Nearest Neighbor**.
         <br> Pada pendekatan *Collaborative Filtering*, terdapat dua jenis, yaitu *User-Based* dan *Item-Based*, pada proyek ini akan digunakan *Item-Based*. Metode *Item-Based* *Collaborative Filtering* ini memanfaatkan kesamaan antara pemberi rating terhadap item untuk memberikan rekomendasi. Pada tahap awal, dilakukan perhitungan kesamaan antara item berdasarkan preferensi pengguna. Setelah itu, rekomendasi diberikan berdasarkan item yang mirip dengan item yang disukai pengguna.
 
-    -   **Collaborative Filtering dengan *Deep Learning***.
+    -   **Collaborative Filtering dengan Deep Learning**.
         <br> Model *deep learning* digunakan untuk memodelkan hubungan yang kompleks antara pengguna dan ponsel berdasarkan data historis. *Deep Learning* adalah subbidang dari *machine learning* yang terinspirasi oleh struktur otak manusia, disebut *Artificial Neural Networks* (ANN). ANN adalah jaringan saraf tiruan yang memiliki struktur mirip dengan otak manusia. Ia terdiri dari lapisan-lapisan (layers) dengan neuron-neuron yang saling terhubung. Pada model *Collaborative Filtering*, ANN dapat memahami pola yang sulit diidentifikasi melalui metode tradisional. Model ini dapat memberikan rekomendasi yang lebih personal dan akurat dengan memahami konteks dan preferensi pengguna secara mendalam. Metode Deep Learning lebih efisien dalam menangani data historis dan memberikan rekomendasi yang lebih tepat sasaran berdasarkan pemahaman yang lebih mendalam terhadap pola-pola kompleks dalam data.
 
 
@@ -153,7 +153,7 @@ Berikut tahapan-tahapan dalam menyiapkan data:
         <br> **Gambar 5.** Pivot Tabel Untuk Model KNN
 
 - **Persiapan data untuk Collaborative Filtering dengan Deep Learning**. Persiapan data melibatkan langkah-langkah seperti:
-    -   **Encoding Fitur User dan Ponsel (Cellphone)**
+    -   **Encoding Fitur User dan Ponsel**
         <br> Dilakukan proses encoding pada fitur `user_id` dan `cellphone_id` untuk mengubah data non-numerik menjadi representasi numerik. Pada tahap ini, fungsi *enumerate* dimanfaatkan untuk memberikan indeks integer unik untuk setiap `user_id` dan `cellphone_id`. Proses ini memungkinkan model untuk memproses data tersebut secara efektif. Hasil encoding tersebut kemudian dipetakan kembali ke dataframe yang relevan, menciptakan representasi numerik dari entitas user dan ponsel.
 
     -   **Pembagian Data untuk Pelatihan dan Validasi**
@@ -163,7 +163,7 @@ Berikut tahapan-tahapan dalam menyiapkan data:
 Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekomendasikan ponsel pintar kepada pengguna. Pada proyek ini sistem rekomendasi yang dibuat menggunakan teknik *content based filtering* dan *collaborative filtering* dengan menggunakan 2 pendekatan yaitu pendekatan Item-Based dengan algoritma *K-Nearest Neighbor* dan pendekatan *Deep learning* atau *Neural Network*.
 
 - **Content Based Filtering**
-  <br> Untuk membangun model Content-Based Filtering, langkah pertama melibatkan persiapan data dengan memilih fitur-fitur utama yang akan menjadi dasar rekomendasi. Selanjutnya, fitur-fitur yang dipilih digabungkan ke dalam satu kolom baru yang diberi nama `combinedFeatures`. Proses penggabungan ini melibatkan penyatuan nilai-nilai fitur tersebut ke dalam satu string yang mencerminkan karakteristik ponsel secara menyeluruh. Hasil penggabungan ini akan menjadi dasar untuk mengukur kesamaan antarponsel. Dalam langkah mengukur kesamaan, *CountVectorizer* digunakan untuk mengonversi teks pada kolom `combinedFeatures` menjadi vektor numerik. Hal ini memungkinkan perhitungan kemiripan antarponsel. Selanjutnya menghitung matriks kemiripan menggunakan kemiripan kosinus. Matriks ini memberikan nilai kemiripan antara setiap pasang ponsel dalam dataset. Dengan matriks kemiripan yang dihasilkan, fungsi rekomendasi Content-Based Filtering dapat dibuat. Fungsi ini mempertimbangkan indeks model tertentu dan menghasilkan rekomendasi ponsel berdasarkan kesamaan fitur. Rekomendasi ini dapat disesuaikan dengan kebutuhan, misalnya, menampilkan 10 ponsel teratas. Dengan langkah-langkah tersebut, model Content-Based Filtering dapat memberikan rekomendasi ponsel berdasarkan kemiripan fitur-fitur yang dipilih.
+  <br> Untuk membangun model *Content-Based Filtering*, langkah pertama melibatkan persiapan data dengan memilih fitur-fitur utama yang akan menjadi dasar rekomendasi. Selanjutnya, fitur-fitur yang dipilih digabungkan ke dalam satu kolom baru yang diberi nama `combinedFeatures`. Proses penggabungan ini melibatkan penyatuan nilai-nilai fitur tersebut ke dalam satu string yang mencerminkan karakteristik ponsel secara menyeluruh. Hasil penggabungan ini akan menjadi dasar untuk mengukur kesamaan antarponsel. Dalam langkah mengukur kesamaan, *CountVectorizer* digunakan untuk mengonversi teks pada kolom `combinedFeatures` menjadi vektor numerik. Hal ini memungkinkan perhitungan kemiripan antarponsel. Selanjutnya menghitung matriks kemiripan menggunakan kemiripan kosinus. Matriks ini memberikan nilai kemiripan antara setiap pasang ponsel dalam dataset. Dengan matriks kemiripan yang dihasilkan, fungsi rekomendasi *Content-Based Filtering* dapat dibuat. Fungsi ini mempertimbangkan indeks model tertentu dan menghasilkan rekomendasi ponsel berdasarkan kesamaan fitur. Rekomendasi ini dapat disesuaikan dengan kebutuhan, misalnya, menampilkan 5 ponsel teratas. Dengan langkah-langkah tersebut, model *Content-Based Filtering* dapat memberikan rekomendasi ponsel berdasarkan kemiripan fitur-fitur yang dipilih.
   <br>
   <br> Berikut hasil rekomendasi *Content Based Filtering* dengan *Cosine Similarity*:
   
@@ -177,18 +177,31 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
 	| 4 | Android                                         | 128             | 8   | 50          | 12 Pro          | 1.0   |
 
 	**Tabel 2.** Hasil Rekomendasi Content Based Filtering
+ 
+  Pada  Tabel 2., Hasil rekomendasi menampilkan 5 model ponsel yang memiliki kemiripan yang sama dengan ponsel dengan model 10T. Terdapat kolom fitur bernama `score` yang menunjukkan nilai kemiripan kosinus terhadap ponsel model 10T.
   
+  Berikut informasi mengenai model ponsel 10T:
+  
+	|    | 10T              |                 |     |             |
+	|----|------------------|-----------------|-----|-------------|
+	|    | operating system | internal memory | RAM | main camera |
+	| 38 | Android          | 128             | 8   | 50          |
+
+	**Tabel 3.** Informasi Ponsel Model 10T 
+ 
+   Pada  Tabel 3., terlihat bahwa adanya nilai yang sama berdasarkan fitur-fitur yang ingin dicari seperti *operating system*, *internal memory*, RAM, dan *main camera* terhadap ponsel model '10T'. Kelima rekomendasi menampilkan fitur dan skor kemiripan yang tepat kecuali pada model 'Moto G Stylus'. Skor kemiripan kosinus ponsel model 'Moto G Stylus' bernilai 1. Tetapi pada fitur `RAM` ponsel tersebut memiliki data yang berbeda dibandingkan ponsel model '10T'. Ponsel tersebut tidak relevan sebagai rekomendasi. Sehingga dapat disimpulkan ada empat dari lima ponsel yaitu Pixel 6, Nord 2T, Galaxy S22 Plus, dan 12 Pro, yang relevan yang ditampilkan berdasarkan kemiripan fitur.
+
+  Kelebihan dan kekurangan dari model *Content Based Filtering* dengan *Cosine Similarity* sebagai berikut:
     -   Kelebihan:
 	    -   Mampu memberikan rekomendasi berdasarkan fitur yang disukai pengguna.
-	    -   Efektif untuk mengatasi cold start problem.
 	    -   Pemahaman terhadap preferensi individual pengguna.
     -   Kekurangan:
-	    -   Rentan terhadap over-specialization, di mana rekomendasi hanya didasarkan pada preferensi sebelumnya tanpa variasi.
+	    -   Rentan terhadap over-specialization, dimana rekomendasi hanya didasarkan pada preferensi sebelumnya tanpa variasi.
 	    -   Bergantung pada kualitas deskripsi dan representasi fitur dari item.
 	    -   Tidak efektif pada fitur yang banyak.
 	    -   Kurang akurat jika suatu fitur memiliki banyak sekali keberagaman.
 
-- **Collaborative Filtering dengan KNN**
+- **Collaborative Filtering dengan K-Nearest Neighbor**
   <br> Untuk membangun model ini, digunakan fungsi NearestNeighbors dari sklearn dengan parameter metrik 'cosine'. Algoritma ini menghitung kesamaan cosinus antara vektor rating. Penggunaan algoritma 'brute' pada parameter mengindikasikan bahwa algoritma akan menghitung tetangga terdekat dengan mencari kesamaan langsung dengan seluruh data. Model ini kemudian diinisialisasi sebagai model_knn dan difitting terhadap data yang telah diubah menjadi pivot table. <br>
   <br> Setelah tahap inisialisasi dan fitting, dibuat fungsi recommend_cellphone untuk memberikan rekomendasi terhadap suatu model ponsel pintar. Hasil rekomendasi ini disajikan dengan menyertakan model ponsel yang memiliki kesamaan dengan model yang diberikan. <br>
   <br> Berikut adalah hasil rekomendasi *Collaborative Filtering* dengan KNN:
@@ -206,14 +219,16 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
 	| 8: X80 Pro, with distance of 0.5922716936733281          |
 	| 9: Galaxy A13, with distance of 0.5309814131625528       |
 
-  	**Tabel 3.** Hasil Rekomendasi Collaborative Filtering Dengan KNN
+  	**Tabel 4.** Hasil Rekomendasi Collaborative Filtering Dengan KNN
+  
+  Pada Tabel 4., dengan model *K-Nearest Neighbor*, diperoleh keluaran 10 ponsel hasil rekomendasi untuk ponsel dengan model 'Xperia Pro' dengan jarak > 0.50.
 
+  Kelebihan dan kekurangan dari model *Collaborative Filtering* dengan *K-Nearest Neighbor* sebagai berikut:
     -   Kelebihan:
 	    -   Mampu memberikan rekomendasi berdasarkan perilaku dan preferensi serupa antar pengguna.
-	    -   Dapat menangani cold start problem melalui item-based collaborative filtering.
 	    -   Tidak memerlukan informasi eksplisit mengenai item.
     -   Kekurangan:
-	    -   Rentan terhadap masalah sparsity pada data pengguna-item.
+	    -   Rentan terhadap masalah *sparsity* pada data pengguna-item.
 	    -   Performa dapat menurun jika jumlah pengguna dan item sangat besar.
 	    -   Tidak dapat menangani perubahan cepat dalam preferensi pengguna.
   
@@ -246,8 +261,11 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
 	| 10 Pro : OnePlus                       |
 	| iPhone 13 : Apple                      |
 
-  	**Tabel 4.** Hasil Rekomendasi Collaborative Filtering Dengan Deep Learning
-
+  	**Tabel 5.** Hasil Rekomendasi Collaborative Filtering Dengan Deep Learning
+  
+  Hasil pada Tabel 5. merupakan keluaran rekomendasi untuk user dengan `user_id`: 255. Keluaran tersebut memberikan informasi tentang ponsel yang dinilai oleh *user* 255 paling baik. Informasi selanjutnya menampilkan 10 rekomendasi ponsel yang cocok untuk *user* tersebut. Brand ponsel Apple menjadi rekomendasi teratas disusul oleh brand dari Samsung yang mana sesuai dengan preferensi *user*.
+  
+  Kelebihan dan kekurangan dari model *Collaborative Filtering* dengan *Deep Learning* sebagai berikut:
     -   Kelebihan:
 	    -   Mampu menangani pola kompleks dalam data pengguna dan item.
 	    -   Dapat memberikan rekomendasi yang lebih personal dan akurat.
@@ -255,7 +273,7 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
     -   Kekurangan:
 	    -   Memerlukan jumlah data historis yang cukup untuk pelatihan model deep learning.
 	    -   Pemrosesan yang lebih intensif secara komputasional, terutama pada model deep learning.
-	    -   Rentan terhadap overfitting jika data pelatihan tidak cukup diversifikasi.
+	    -   Rentan terhadap *overfitting* jika data pelatihan tidak cukup diversifikasi.
 
 
 ## Evaluation
@@ -275,11 +293,11 @@ Dari hasil rekomendasi model *Content Based Filtering*, terdapat 5 rekomendasi d
 
 Untuk menghitung RMSE, hasil perhitungan MSE kemudian diakar kuadratkan untuk mendapatkan nilai akhir RMSE. Hasil RMSE yang rendah menunjukkan bahwa model memiliki kemampuan yang baik dalam memprediksi peringkat pengguna terhadap item, dan rekomendasi yang dihasilkan cenderung lebih sesuai dengan preferensi pengguna. Sebaliknya, nilai RMSE yang tinggi menunjukkan bahwa model memiliki tingkat kesalahan yang signifikan dalam memprediksi peringkat, dan rekomendasi mungkin tidak sesuai dengan preferensi pengguna secara akurat. <br>
 
-- **MSE**
+- **Mean Squared Error**
   <br> Perumusan MSE adalah sebagai berikut:
   $$MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
   
-- **RMSE**
+- **Root Mean Squared Error**
   <br> Perumusan RMSE adalah sebagai berikut:
   $$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$ <br>
 
@@ -297,7 +315,7 @@ Pada Gambar 7, dilakukan evaluasi menggunakan seluruh data memperoleh nilai erro
 
 
 ## Kesimpulan
-Dari hasil evaluasi, dapat disimpulkan bahwa kedua model, baik Content-Based Filtering maupun Collaborative Filtering, memberikan kinerja yang baik dalam memberikan sistem rekomendasi. Hasil dari model *Content Based Filtering* menunjukkan tingkat presisi yang tinggi sebesar 80%. Presisi yang tinggi pada model Content-Based Filtering menunjukkan kecakapan model dalam menghasilkan rekomendasi yang sesuai dengan preferensi pengguna. Kemudian setelah melakukan evaluasi terhadap model *Collaborative Fitlering* dengan metode *Deep Learning*, nilai RMSE yang dijadikan sebagai metrik pada model adalah 0.3281. Model dengan nilai tersebut memiliki tingkat akurasi yang baik dalam memberikan rekomendasi.
+Dari hasil evaluasi, dapat disimpulkan bahwa kedua model, baik *Content-Based Filtering* maupun *Collaborative Filtering*, memberikan kinerja yang baik dalam memberikan sistem rekomendasi. Hasil dari model *Content Based Filtering* menunjukkan tingkat presisi yang tinggi sebesar 80%. Presisi yang tinggi pada model *Content-Based Filtering* menunjukkan kecakapan model dalam menghasilkan rekomendasi yang sesuai dengan preferensi pengguna. Kemudian setelah melakukan evaluasi terhadap model *Collaborative Fitlering* dengan metode *Deep Learning*, nilai RMSE yang dijadikan sebagai metrik pada model adalah 0.3281. Model dengan nilai tersebut memiliki tingkat akurasi yang baik dalam memberikan rekomendasi.
 
 
 ## Penutup
