@@ -74,6 +74,8 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
   | Lisensi         | [Open Data Commons Open Database License (ODbL) v1.0](https://opendatacommons.org/licenses/odbl/1-0/)       |
   | Kategori        | Pre-Trained Model, Electronics, E-Commerce Services, Mobile and Wireless, Recommender Systems               |
   | Tipe dan Ukuran | CSV (5 kB)                                                                                                  |
+  
+  **Tabel 1.** Informasi Dataset
 
   Berikut informasi lebih lanjut mengenai berkas dataset yang telah diunduh:
     - Terdapat tiga berkas csv dari dataset yaitu `cellphones data.csv`, `cellphones rating`, dan `cellphones users`.
@@ -172,6 +174,8 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
 	| 2 | Android                                         | 128             | 8   | 50          | Galaxy S22 Plus | 1.0   |
 	| 3 | Android                                         | 128             | 6   | 50          | Moto G Stylus   | 1.0   |
 	| 4 | Android                                         | 128             | 8   | 50          | 12 Pro          | 1.0   |
+
+	**Tabel 2.** Hasil Rekomendasi Content Based Filtering
   
     -   Kelebihan:
 	    -   Mampu memberikan rekomendasi berdasarkan fitur yang disukai pengguna.
@@ -200,6 +204,8 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
 	| 7: Pixel 6, with distance of 0.620879067430839           |
 	| 8: X80 Pro, with distance of 0.5922716936733281          |
 	| 9: Galaxy A13, with distance of 0.5309814131625528       |
+
+  	**Tabel 3.** Hasil Rekomendasi Collaborative Filtering Dengan KNN
 
     -   Kelebihan:
 	    -   Mampu memberikan rekomendasi berdasarkan perilaku dan preferensi serupa antar pengguna.
@@ -238,6 +244,8 @@ Pada proyek ini, model yang akan dibuat berupa sistem rekomendasi untuk merekome
 	| Pixel 6 Pro : Google                   |
 	| 10 Pro : OnePlus                       |
 	| iPhone 13 : Apple                      |
+
+  	**Tabel 4.** Hasil Rekomendasi Collaborative Filtering Dengan Deep Learning
 
     -   Kelebihan:
 	    -   Mampu menangani pola kompleks dalam data pengguna dan item.
@@ -283,6 +291,10 @@ Pada pembuatan proyek ini metrik evaluasi yang digunakan yaitu root mean squared
 <br> ![hasil_evaluate](https://github.com/haadid/MachineLearningTerapan-Dicoding/assets/92203636/d71e24dc-ea3f-4809-9e05-7b6647dcde99)
 
 Setelah dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3281.
+
+
+## Kesimpulan
+Dari hasil evaluasi, dapat disimpulkan bahwa kedua model, baik Content-Based Filtering maupun Collaborative Filtering, memberikan kinerja yang baik dalam memberikan sistem rekomendasi. Hasil dari model *Content Based Filtering* menunjukkan tingkat presisi yang tinggi sebesar 80%. Presisi yang tinggi pada model Content-Based Filtering menunjukkan kecakapan model dalam menghasilkan rekomendasi yang sesuai dengan preferensi pengguna. Kemudian setelah melakukan evaluasi terhadap model *Collaborative Fitlering* dengan metode *Deep Learning*, nilai RMSE yang dijadikan sebagai metrik pada model adalah 0.3281. Model dengan nilai tersebut memiliki tingkat akurasi yang baik dalam memberikan rekomendasi.
 
 
 ## Penutup
