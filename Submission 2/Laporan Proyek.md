@@ -105,22 +105,22 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini diantaranya :
     - **Jumlah Ponsel Tiap Brand**
       <br> Terdapat 10 brand yang terdapat pada dataset.
       ![jumlah_ponsel_tiap_brand](https://user-images.githubusercontent.com/92203636/285137599-a3c05129-2a4d-4d19-b776-e87af062fa78.png)
-      <br> Gambar 1. Jumlah Ponsel Tiap Brand <br>
+      <br> **Gambar 1.** Jumlah Ponsel Tiap Brand <br>
       <br> Pada Gambar 1, ponsel pintar merek Samsung memiliki banyak model yang terdapat dalam dataset. Sedangkan  ponsel pintar model Asus, Oppo, Sony, dan Vivo hanya terdapat masing-masing 1.
 
     - **Rata-rata Rating Ponsel Tiap Brand**
       <br> ![rata_rata_rating_tiap_brand](https://user-images.githubusercontent.com/92203636/285138711-58ec6647-c4b5-4a1e-a531-572b2a1283dc.png)
-      <br> Gambar 2. Rata-rata Rating Ponsel Tiap Brand <br>
+      <br> **Gambar 2.** Rata-rata Rating Ponsel Tiap Brand <br>
       <br> Pada Gambar 2, ponsel pintar merek Apple memiliki nilai rata-rata yang paling baik. *Chart* ini tidak bisa wakilkan dengan baik karena jumlah ponsel tiap brand berbeda.
 
     - **Distribusi Rating**
       <br> ![distribusi_rating](https://user-images.githubusercontent.com/92203636/285139930-44a855ca-3d34-4334-b3de-581c17ce028d.png)
-      <br> Gambar 3. Distribusi Rating <br>
+      <br> **Gambar 3.** Distribusi Rating <br>
       <br> Pada Gambar 3, distribusi rating terlihat tidak beraturan dan ada sedikit pola yang menunjukkan *negative skew* pada rating 3-8.
 
     - **Wordcloud Model Ponsel**
        <br> ![wordcloud_model_ponsel](https://github.com/haadid/MachineLearningTerapan-Dicoding/assets/92203636/84923aee-0229-45e9-9070-51ccbf6bfc1c)
-       <br> Gambar 4. *Worldcloud* Model Ponsel <br>
+       <br> **Gambar 4.** Worldcloud Model Ponsel <br>
        <br> Pada Gamabr 4, ditampilkan daftar kata-kata yang sering digunakan pada penamaan model semakin sering kata tersebut digunakan maka semakin besar kata tersebut. Terlihat kata yang paling sering digunakan adalah 'Moto G'
 
 
@@ -150,6 +150,7 @@ Berikut tahapan-tahapan dalam menyiapkan data:
         <br> Sebelum melanjutkan ke pembuatan model rekomendasi menggunakan KNN untuk sistem rekomendasi ponsel, perlu dilakukan transformasi data untuk memenuhi format yang dibutuhkan oleh model. Data rating ponsel akan diubah menjadi matriks dengan ukuran m x n, di mana m merupakan jumlah ponsel dan n merupakan jumlah pengguna. Transformasi ini dilakukan dengan membuat pivot tabel menggunakan modul [pivot_table](https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html) dari pandas. Pada pivot tabel ini, judul ponsel akan menjadi indeks, id pengguna akan menjadi kolom, dan nilai rating akan menjadi entri pada setiap sel tabel.
         <br> <br> Berikut adalah hasil *pivot table* yang dibentuk:
         ![hasil_pivot_table](https://user-images.githubusercontent.com/92203636/285189933-8a59be56-3bc8-4350-b8e8-a7912d356f77.png)
+        <br> **Gambar 5.** Pivot Tabel Untuk Model KNN
 
 - **Persiapan data untuk Collaborative Filtering dengan Deep Learning**. Persiapan data melibatkan langkah-langkah seperti:
     -   **Encoding Fitur User dan Ponsel (Cellphone)**
@@ -285,12 +286,14 @@ Untuk menghitung RMSE, hasil perhitungan MSE kemudian diakar kuadratkan untuk me
 
 Berikut merupakan visualisasi metrik pada training terhadap model *deep learning* : <br>
 ![hasil_training](https://github.com/haadid/MachineLearningTerapan-Dicoding/assets/92203636/b0caecab-06ad-47a2-9277-328a740819d9)
+<br> **Gambar 6.** Plot Nilai RMSE Pada Pelatihan Deep Learning
 
+Pada Gambar 6, Proses training model cukup smooth dan model konvergen pada epochs. Hasil pelatihan tampaknya berada dalam kondisi *good fit*. Performa pada data validasi tidak menunjukkan tanda-tanda *overfitting*, dan RMSE yang rendah pada kedua dataset menunjukkan kemampuan model dalam memprediksi peringkat dengan baik. Dari proses ini, diperoleh nilai error akhir sebesar sekitar 0.2040 dan error pada data validasi sebesar 0.2944. Nilai tersebut cukup bagus untuk sistem rekomendasi. <br>
 
-Pada pembuatan proyek ini metrik evaluasi yang digunakan yaitu root mean squared error (RMSE). Proses training model cukup smooth dan model konvergen pada epochs. Hasil pelatihan tampaknya berada dalam kondisi *good fit*. Performa pada data validasi tidak menunjukkan tanda-tanda *overfitting*, dan RMSE yang rendah pada kedua dataset menunjukkan kemampuan model dalam memprediksi peringkat dengan baik. Dari proses ini, diperoleh nilai error akhir sebesar sekitar 0.2040 dan error pada data validasi sebesar 0.2944. Nilai tersebut cukup bagus untuk sistem rekomendasi. <br>
 <br> ![hasil_evaluate](https://github.com/haadid/MachineLearningTerapan-Dicoding/assets/92203636/d71e24dc-ea3f-4809-9e05-7b6647dcde99)
+<br> **Gambar 7.** Evaluasi Akhir Model Deep Learning
 
-Setelah dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3281.
+Pada Gambar 7, dilakukan evaluasi menggunakan seluruh data memperoleh nilai error sebesar 0.3281.
 
 
 ## Kesimpulan
