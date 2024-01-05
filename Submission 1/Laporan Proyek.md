@@ -13,7 +13,7 @@ Melalui proyek ini, teknik dan algoritma dalam *machine learning* dimanfaatkan u
 
 ### Urgensi dan Relevansi
 1. **Masalah Kesehatan Global**
-   <br> Diabetes adalah masalah kesehatan global yang memengaruhi banyak individu dari berbagai latar belakang dan usia. Dengan memprediksi risiko diabetes, kita dapat memberikan layanan perawatan yang lebih baik.
+   <br> Diabetes adalah masalah kesehatan global yang memengaruhi banyak individu dari berbagai latar belakang dan usia. Prediksi risiko diabetes dapat memberikan pelayanan perawatan yang lebih optimal dan bermanfaat.
 2.  **Pencegahan Komplikasi**
     <br> Diabetes dapat menyebabkan berbagai komplikasi serius, termasuk kerusakan organ. Identifikasi dini individu yang berisiko dapat membantu mencegah komplikasi ini.
 3.  **Efisiensi Perawatan Kesehatan**
